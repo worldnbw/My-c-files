@@ -1,0 +1,103 @@
+import javax.swing.*;
+chapublic class Big
+{
+   public static void main (String [] arg)
+   { 
+   String first = JOptionPane.showInputDialog("Enter first string: " );
+   String second = JOptionPane.showInputDialog("Enter second number:");
+   char[] num1 = new char [first.length()];
+   char[] num2 = new char [second.length()];
+   int [] n1 = new int [num1.length];
+   int [] n2 = new int [num2.length];
+   int[] ans = new int [n1.length + n2.length];
+   num1 = in(first);
+   num2 = in(second);     
+   n1 = change(num1);
+   n2 = change(num2);
+   flip (num1);
+   System.out.println();
+   flip (num2);
+   ans = add(n1, n2);
+   flip (ans);
+   out (ans);
+   System.exit(0);
+   }
+public static char[] in (String s)
+{
+    char [] a = new char [s.length()]; 
+    int i=0, j=0;
+    for (i=0,j=0; i<= s.length()-1; i++,j++)
+ {
+        if ((s.charAt(j)>='0') &&( s.charAt(j)<='9'))
+  {
+            a[i] =( s.charAt(j));
+  }
+  else
+  {
+  System.out.println("Error!");
+  System.exit(0);
+  }
+ }
+    return (a);
+}
+public static void flip(char [] a)
+{
+ char[] b=new char[a.length];
+ 
+ for (int i=0, j=a.length; i<j; i++,j--)
+ {
+  b[i]=a[j];
+ }
+ for (int i=0; i<=a.length-1; i++)
+ {
+        System.out.println(i +  ":" + a[i]);
+       
+ }
+}
+public static void flip(int [] a)
+{
+ for (int i=0, j=a.length-i; i<j; i++,j--)
+ {
+  int temp=a[i];
+  a[i]=a[i+1];
+  a[i+1]=temp;
+ }
+}
+public static int [] change(char []a)
+{
+ int [] b = new int [a.length];
+ for (int i=0; i <a.length; i++)
+ {
+  b[i] = (a[i] -'0');
+ }
+ return (b);
+} 
+public static int []  add(int [] n1, int [] n2)
+{ 
+ int [] c = new int [n1.length + n2.length];
+ for (int i=0; i< (n1.length); i++)  
+ {
+  for (int j=0; j< n2.length; j++)
+  {
+   c[i+j] += n1[i]+ n2[i];
+  }
+ }
+ for (int i=0; i<c.length-1; i++)
+ {
+  if (c[i]%10 !=0)
+  {
+  c[i] = c[i]%10;
+    c[i+1] = c[i+1] + 1;
+    }
+ }
+ return (c);
+}
+public static void out(int [] ans)
+{
+ for (int i=0; i<ans.length -1; i++)
+ {
+  System.out.println("the answer is"+ ans[i]);
+ }
+}
+}
+

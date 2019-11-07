@@ -1,0 +1,54 @@
+*Laura McCallum*********************Sec3125***********************3/09/2004************/
+import javax.swing.*;
+class Complex
+{
+ private int real;
+ private double img;
+ public void setReal ( int a )
+ {
+   real = a;
+ }
+ public void setImg (double b)
+ {
+   img=b;
+ }
+ public int getReal ()
+ {
+   return real;
+ }
+ public double getImg ()
+ {
+   return img;
+ }
+ public Complex ()
+ {
+  real=(Integer.parseInt( JOptionPane.showInputDialog(" Enter the real part of your first number: ")));
+  System.out.print( "The real part of the complex number entered is: " + real);
+  System.out.println();
+  img=(Double.parseDouble (JOptionPane.showInputDialog(" Enter the imaginary part of your first number: ")));
+  System.out.print( "The imaginary part of the complex number entered is: " + img + 'i');
+  System.out.println();
+ }
+ public Complex Ans(Complex b)
+ {
+  System.out.println(("The answer is: " + (real + b.real) + (img + b.img) + 'i');
+  return b;
+ }
+ public String toString()
+ {
+  return (("real + img +)"+" 'i'"));
+ }
+}
+public class Num
+{
+public static void main ( String [] arg)
+{
+ Complex x = new Complex();
+ Complex y=new Complex();
+ x=Ans(x);
+ System.out.println();
+ System.out.println(toString());
+ System.exit(0);
+ }
+}
+

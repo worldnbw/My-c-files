@@ -1,0 +1,140 @@
+ 
+// Laura McCallum*********Section 3125*********Due date: 2/29/04****/
+import javax.swing.*;
+public class NumLarge
+{
+   public static void main (String [] arg)
+   {
+   System.out.println("This program can add two numbers of unlimited size");
+   String s1 = JOptionPane.showInputDialog("Enter first number: " );  //get first num 
+   String s2 = JOptionPane.showInputDialog("Enter second number:");  //get second num
+ 
+   char[] s1array = new char [s1.length()];         //make array for 1st num     
+   char[] s2array = new char [s2.length()];         //for second num
+ 
+   int [] num1 = new int [s1array.length];         //make int array for 1st num
+   int [] num2 = new int [s2array.length];         //for second num
+ 
+   int [] ans;                   //make array for ans
+ 
+    if (num1.length == num2.length)            //set size of ans
+   {
+       ans = new int [num1.length + 1];
+   }
+   if (num1.length > num2.length)
+   {
+      ans = new int [num1.length +1];
+   }
+   if (num1.length < num2.length)
+   {
+      ans = new int [num2.length +1];
+   }
+   s1array = getnum(s1);       //move string to array if valid input is found
+   s2array = getnum(s2);       //second string
+ 
+   s1array = flip (s1array);      //flip number for addition line up
+   System.out.println();
+  
+   s2array = flip (s2array);      //flip second
+   System.out.println();
+ 
+   num1 = change(s1array);       //change string to int
+   num2 = change(s2array);       //change second
+   System.out.println();
+ 
+   ans = add(num1, num2);       //add ints
+ ans =  reverse(ans);        //flip answer
+ System.out.println();
+ 
+   out (ans);           //print answer
+ 
+   System.exit(0);
+   }
+public static char[] getnum(String s)    //getnum function
+{
+    char [] a = new char [s.length()];
+    int i=0, j=0;
+    System.out.println("You entered:");
+    for (i=0; i<= s.length()-1; i++)
+    {
+     System.out.print(" " + s.charAt(i));
+    }
+    System.out.println(" ");
+   
+    for (i=0,j=0; i<= s.length()-1; i++,j++)
+ {
+        if ((s.charAt(j)>='0') &&( s.charAt(j)<='9'))
+  {
+            a[i] =( s.charAt(j));
+  }
+  else
+  {
+  System.out.println("Error!");
+  System.exit(0);
+  }
+ }
+ System.out.println("First function ok");
+    return (a);
+}
+public static char [] flip(char [] a)    //flip char function
+{
+ char [] b = new char [a.length];
+ for (int i=0, j= a.length-1; i< a.length; i++, j--)
+ {
+  b[i] = a[j];
+ }
+ for (int n=0; n <b.length; n++)
+ {
+        System.out.println( n + ": " +  b[n] );
+   }
+   System.out.println("Second Function ok");
+   return (b);
+}
+public static int [] reverse(int [] a)     //reverse int function 
+{
+ int [] b = new int [a.length];
+ for (int i=0, j=a.length-1; i<a.length; i++,j--)
+ {
+  b[i] = a[j];
+ }
+ System.out.println("Third function ok");
+   return (b);
+}
+public static int [] change(char []a)    //change to int function
+{
+ int [] b = new int [a.length];
+ for (int i=0; i < a.length; i++)
+ {
+  b[i] = (a[i] -'0');
+ }
+ System.out.println("Fourth function ok");
+ return (b);
+}
+public static int []  add(int [] num1, int [] num2)  //add function
+{
+ int d = ((num1.length >num2.length) ? num1.length : num2.length) +1;
+ int [] c = new int [d];
+ for (int i=0; i <num1.length; i++)
+  c[i] += num1[i];
+ for (int i=0; i< num2.length; i++)
+ c[i] += num2[i];
+ for (int i=0; i< d-2; i++)
+ {
+  c[i+1]+=c[i]/10;
+  c[i]%=10;
+ }
+ System.out.println("Add function ok");
+ return (c);
+}
+public static void out(int [] ans)     //out answer function
+{
+ System.out.print("the answer is: ");
+ for (int i=1; i<ans.length ; i++)
+ {
+  System.out.print( ans[i]);
+ }
+  System.out.println();
+  System.out.println("Thank You.");
+}
+}
+

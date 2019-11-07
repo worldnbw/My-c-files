@@ -1,0 +1,52 @@
+#include <iostream>
+#include <stdlib.h>
+#include <string>
+#include <fstream>
+#include <stdio.h>
+
+
+using namespace std;
+
+
+int main()
+{
+
+	ifstream fp_in;  // declarations of streams fp_in and fp_out
+	ofstream fp_out;
+	int count=0;
+	string mystring;  //declare as array of type char or pointer to type char
+	fp_in.open("senators.txt", ios::in);
+	fp_out.open("mysenate.txt", ios::out);
+	
+		while (!fp_in.eof())
+		
+	{
+		
+		for (int i=0; i<2; i++)
+			{
+				getline(fp_in,mystring);
+	        	count=mystring.size();
+				cout<<count;
+				fp_out<<" "<<count;
+				fp_out<<mystring;
+		        cout<<mystring;  
+
+			if (mystring.compare("horizontal"))
+		{
+			
+			fp_out<<endl;
+			fp_out<<"in loop";
+			cout<<endl;
+			cout<<"In loop";
+		}
+		}
+	}
+
+
+	
+	fp_in.close();   // close the streams
+	fp_out.close(); 
+
+	return 0;
+}
+ 

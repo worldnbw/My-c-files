@@ -1,0 +1,164 @@
+ 
+// Laura McCallum*******************HW 5A*************Section 3125******March 20, 2004**/
+import javax.swing.*;
+import java.math.*;
+abstract class Shapes
+{
+ private double x;
+ private double y;
+ public static double PI=3.141592654;
+ public void setX(double a)
+ {
+  x=a;
+ }
+ public void setY(double b)
+ {
+  y=b;
+ }
+ public double getX()
+ {
+  return x;
+ }
+ public double getY()
+ {
+  return y;
+ }
+ public Shapes()
+ {
+  x=Double.parseDouble(JOptionPane.showInputDialog("Enter the x value: " ));
+  y=Double.parseDouble(JOptionPane.showInputDialog("Enter the y value: " ));
+ }
+ public Shapes (double c, double d)
+ {
+  x=c;
+  y=d;
+ }
+ abstract public double area();
+ abstract public void draw();
+}
+class Rect extends Shapes
+{
+ private double length;
+ private double width;
+ public Rect(double X,double Y, double e, double f)
+ { 
+  super(X,Y);
+    length = e;
+  width = f;
+ }
+ public void setLength (double Len)
+ {
+  length = Len;
+ }
+ public void setWidth( double Wid)
+ {
+  width = Wid;
+ }
+ public double getLength ()
+ {
+  return length;
+ }
+ public double getWidth()
+ {
+  return width;
+ }
+ public Rect()
+ {
+  length = Double.parseDouble(JOptionPane.showInputDialog("Enter the length of your rectangle: " ));
+  width = Double.parseDouble(JOptionPane.showInputDialog("Enter the width of your rectangle: " ));
+ }
+ 
+ public double area ( double L, double W)
+ {
+  double ans = L*W;
+  System.out.println("My area is: " + ans);
+  return ans;
+ }
+ public void draw(double ans, double L, double W, double X, double Y)
+ {
+  System.out.println("I am a rectangle at position: " + X + " , " + Y );
+  System.out.println("My length is: " + L + "My width is: " + W);
+  System.out.println("and my area is: " + ans);
+ }
+}
+class Tri extends Shapes
+{
+ private double Mya;
+ private double Myb;
+ private double Myc;
+ public Tri()
+ {
+  Mya = Double.parseDouble(JOptionPane.showInputDialog("Enter the first side of the triangle: " ));
+  Myb = Double.parseDouble(JOptionPane.showInputDialog("Enter the second side of the triangle: " ));
+  Myc = Double.parseDouble(JOptionPane.showInputDialog("Enter the third side of the triangle: " ));
+ }
+ public Tri(double x, double c, double v)
+ {
+  Mya = x;
+  Myb = c;
+  Myc = v;
+ }
+ public void setMya( double mya)
+ {
+  Mya = mya;
+ }
+ public void setMyb (double myb)
+ {
+  Myb = myb;
+ }
+ public void setMyc (double myc)
+ {
+  Myc = myc;
+ }
+ public double getMya()
+ {
+  return Mya;
+ }
+ public double getMyb()
+ {
+  return Myb;
+ }
+ public double getMyc()
+ {
+  return Myc;
+ }
+ public double area(double a, double b, double c)
+ {
+  double s = (1/2)*(a+b+c);
+  double answer = sqrt(s*(s-a)*(s-b)*(s-c));
+  System.out.println("My area is: " + answer);
+  return answer;
+ }
+}
+class Cir extends Shapes
+{ 
+ private double rad;
+ public void SetRad ( double Rad)
+ {
+  rad = Rad;
+ }
+ public double getRad()
+ {
+  return rad;
+ }
+ public Cir()
+ {
+  rad = Double.parseDouble(JOptionPane.showInputDialog("Enter the radius of your circle: " ));
+ }
+ public Cir(double radius)
+ {
+  rad = radius;
+ }
+ public double area(double r)
+ {
+  return (PI * r);
+ }
+}
+class Shps
+{
+public static void main (String[] arg)
+{
+ 
+}
+}
+

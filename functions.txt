@@ -1,0 +1,96 @@
+#include <iostream>
+#include <stdlib.h>
+#include <string>
+#include <fstream>
+#include <stdio.h>
+
+using namespace std;
+
+void myfunction(ifstream &fp, ...)  // use this
+
+int main()
+{
+
+
+ifstream fp_in;  // declarations of streams fp_in and fp_out
+ofstream fp_out;
+fp_in.open("myfile.txt", ios::in);    // open the streams
+fp_out.open("myfile.txt", ios::out);
+fp_in.close();   // close the streams
+fp_out.close(); 
+
+int myinteger;            // declarations
+float myfloat;
+char mychar;
+string mystring;  //declare as array of type char or pointer to type char
+
+fp_in >> myinteger;       // input from file pointer or standard input
+cin >> myfloat;
+fp_in >> mychar;
+cin >> mystring;
+
+cout << "Value of myinteger " << myinteger << endl;
+cout << "My string is " << mystring << " plus a null character\n" << flush;  //To insert a line break, either insert the magic variable endl or write the end-of-line character ('\n') to the output
+
+cout.flush(); //Forcing all buffered output to actually be printed
+
+//input operations
+
+cin.get(char &ch)//Puts the next input character in the variable ch. Returns an integer value, which is zero if it encountered a problem (e.g. end of file). 
+cin.getline(char *buffer, int length)//Reads characters into the string buffer, stopping when (a) it has read length-1 characters or (b) when it finds an end-of-line character ('\n') or the end of the file. Stores a null character ('\0') after the last character read. 
+cin.read(char *buffer, int n)//Reads n bytes (or until the end of the file) from the stream into the buffer. 
+cin.gcount()// Returns the number of characters read by a preceding get, getline, or read command. 
+cin.ignore(int n)// Remove the next n characters (or until end of file) from the input stream, throwing them away into the Great Bit Bucket. 
+cin.putback(char ch)// Puts character ch back onto the stream. Bad things will happen if this character is not the one most recently extracted from the stream. 
+
+
+cin.get()// Returns the next character in the stream. 
+cin.peek()// Returns the next character in the stream but does not remove it from the stream. 
+
+//The following functions can be used to test the status of a stream. They return an integer, which is either zero or non-zero.
+
+cin.good()//Returns 0 if the stream has encountered problems such as reading the end of file, non-existent file. 
+cin.bad()//Returns non-zero value if the stream is totally unusable, e.g. the file cannot be opened (but not if the stream has merely hit the end of the file). 
+cin.eof()//Returns a non-zero value if the stream has hit the end of the file. 
+
+//output operations
+
+cout.put(char ch)//Puts ch onto the stream. 
+cout.write(char *str, int n)//Puts n characters onto the stream, reading them from the string str. 
+
+//format ops
+
+cout.setf(ios::left);    //set option
+cout.unsetf(ios::left);  //unset option 
+ios::right//Right justify output. 
+ios::scientific//Print floating point numbers using scientific notation. 
+ios::fixed//Print floating point numbers using fixed point notation. 
+ios::showpoint//Print a decimal point for all floating point numbers, even when it's not needed (e.g. the number is exactly an integer). 
+
+//rarely ever used
+
+fp_in.clear();              // forget we hit the end of file
+fp_in.seekg(0, ios::beg);   // move to the start of the file
+
+    ofstream fout;//That’s all for that
+
+    fout.open("output.txt");//to open the file
+    ofstream fout("output.txt");//declare and open
+
+	//fout << for files and cout << for console
+	//fin >> for files and cin >> for console
+
+	//the "<<" (insertion) operator, 
+	//the ">>" (extraction) operator
+fin.getline(sentence, 100);//gets whole line
+char sentence[101]; fin >> sentence;//gets first word until space
+
+//Binary allows you to write an entire structure to the file in one line
+
+ofstream fout("file.dat", ios::binary);
+int number = 30; fout.write((char *)(&number), sizeof(number));
+struct OBJECT { int number; char letter; } obj; obj.number = 15; obj.letter = ‘M’; fout.write((char *)(&obj), sizeof(obj));
+
+
+return 0;
+}
